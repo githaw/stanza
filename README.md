@@ -24,13 +24,11 @@ The Stanford NLP Group's official Python NLP library. It contains support for ru
 If you use this library in your research, please kindly cite our [Stanza system description paper](https://arxiv.org/abs/2003.07082):
 
 ```bibtex
-@misc{qi2020stanza,
+@inproceedings{qi2020stanza,
     title={Stanza: A {Python} Natural Language Processing Toolkit for Many Human Languages},
     author={Qi, Peng and Zhang, Yuhao and Zhang, Yuhui and Bolton, Jason and Manning, Christopher D.},
-    year={2020},
-    eprint={2003.07082},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL}
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations",
+    year={2020}
 }
 ```
 The PyTorch implementation of the neural pipeline in this repository is due to [Peng Qi](http://qipeng.me), [Yuhao Zhang](http://yuhao.im), and [Yuhui Zhang](https://cs.stanford.edu/~yuhuiz/), with help from [Jason Bolton](mailto:jebolton@stanford.edu) and [Tim Dozat](https://web.stanford.edu/~tdozat/).
@@ -53,7 +51,7 @@ Stanza supports Python 3.6 or later. We recommend that you install Stanza via [p
 ```bash
 pip install stanza
 ```
-This should also help resolve all of the dependencies of Stanza, for instance [PyTorch](https://pytorch.org/) 1.2.0 or above.
+This should also help resolve all of the dependencies of Stanza, for instance [PyTorch](https://pytorch.org/) 1.3.0 or above.
 
 If you currently have a previous version of `stanza` installed, use:
 ```bash
@@ -87,10 +85,8 @@ To run your first Stanza pipeline, simply following these steps in your Python i
 
 ```python
 >>> import stanza
->>> stanza.download('en')   # This downloads the English models for the neural pipeline
-# IMPORTANT: The above line prompts you before downloading, which doesn't work well in a Jupyter notebook.
-# To avoid a prompt when using notebooks, instead use: >>> stanza.download('en', force=True)
->>> nlp = stanza.Pipeline() # This sets up a default neural pipeline in English
+>>> stanza.download('en')       # This downloads the English models for the neural pipeline
+>>> nlp = stanza.Pipeline('en') # This sets up a default neural pipeline in English
 >>> doc = nlp("Barack Obama was born in Hawaii.  He was elected president in 2008.")
 >>> doc.sentences[0].print_dependencies()
 ```
